@@ -3,6 +3,7 @@ import MainPage from "./MainPage";
 import Nav from "./Nav";
 import ListManufacturers from "./ListManufacturers";
 import CreateManufacturer from "./CreateManufacturer";
+import ListVehicles from "./ListVehicles";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             path="/manufacturers/create"
             element={<CreateManufacturer />}
           />
+          <Route path="/models" element={<ListVehicles />} />
         </Routes>
       </div>
     </BrowserRouter>

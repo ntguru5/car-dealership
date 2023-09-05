@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function CreateManufacturer() {
   const [name, setManufacturer] = useState("");
@@ -30,7 +30,6 @@ function CreateManufacturer() {
     }
   };
 
-  //   useEffect(() => {});
   return (
     <div className="container">
       <div className="row">
