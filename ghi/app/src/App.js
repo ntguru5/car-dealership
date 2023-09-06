@@ -14,6 +14,8 @@ import ListSalesPeople from "./ListSalespeople";
 import AddCustomer from "./AddCustomer";
 import ListCustomers from "./ListCustomers";
 import AppointmentList from "./ListServiceAppointments";
+import ListSales from "./ListSales";
+import SaleHistory from "./SaleHistory";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="salespeople/create/" element={<AddSalesperson />} />
           <Route path="customers/" element={<ListCustomers />} />
           <Route path="customers/create/" element={<AddCustomer />} />
+          <Route path="sales/" element={<ListSales />} />
+          <Route path="sales/history/" element={<SaleHistory />} />
         </Routes>
       </div>
     </BrowserRouter>

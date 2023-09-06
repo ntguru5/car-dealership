@@ -85,6 +85,16 @@ function Nav() {
                 Add a Customer
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/sales">
+                Sales
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/sales/history">
+                Sales History
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
