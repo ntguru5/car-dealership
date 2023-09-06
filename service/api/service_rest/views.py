@@ -48,6 +48,7 @@ def api_technician_list(request):
             {"technicians": technician},
             encoder=TechnicianListEncoder,
         )
+
     else:
         content = json.loads(request.body)
         try:
@@ -62,4 +63,3 @@ def api_technician_list(request):
                 {"message": "Could not add Technician"},
                 status=400,
             )
-    
