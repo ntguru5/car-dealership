@@ -16,6 +16,13 @@ class Technician(models.Model):
         return self.first_name
 
 
+# class Status(models.Model):
+#     name = models.CharField(max_length=20)
+
+#     def __str__(self):
+#         return self.name
+
+
 class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.TextField()
@@ -28,3 +35,9 @@ class Appointment(models.Model):
         related_name="technician",
         on_delete=models.CASCADE,
     )
+
+    # status = models.ForeignKey(
+    #     Status,
+    #     related_name="appointments",
+    #     on_delete=models.PROTECT,
+    # )

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.http import require_http_methods
 from common.json import ModelEncoder
-from .models import AutomobileVO, Technician, Appointment
+from .models import AutomobileVO, Technician, Appointment #Status
 
 
 # Create your views here.
@@ -28,6 +28,7 @@ class AppointmentListEncoder(ModelEncoder):
     properties = [
         "date_time",
         "reason",
+        "status",
         "vin",
         "customer",
         "technician",
@@ -36,8 +37,8 @@ class AppointmentListEncoder(ModelEncoder):
         "technician": TechnicianListEncoder(),
     }
 
-    def get_extra_data(self, o):
-        return {"status": o.status.name}
+    # def get_extra_data(self, o):
+    #     return {"status": o.status.name}
 
 
 # List and create technicians
@@ -83,10 +84,28 @@ def api_delete_technician(request, pk):
 
 
 # List appointments
-# @require_http_methods(["GET", "POST"])
-# def api_list_appointments(request):
-#     if request.method == "GET":
-#         appointment = Appointment.objects.all()
-#         return JsonResponse(
+@require_http_methods(["GET", "POST"])
+def api_list_appointments(request):
+    if request.method == "GET":
+        appointment = Appointment.objects.all()
+        return JsonResponse(
+            {"appointments": appointment},
+            encoder=AppointmentListEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        try:
+            technician = Technician.objects.get(id=content["technician"])
+            content["technician"] = technician
+        except Appointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "Unable to create appointment"},
+                status=400,
+            )
 
-#         )
+        appointment = Appointment.objects.create(**content)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentListEncoder,
+            safe=False,
+        )
