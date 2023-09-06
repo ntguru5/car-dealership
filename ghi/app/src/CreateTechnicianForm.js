@@ -24,8 +24,6 @@ function TechnicianForm() {
 
         const technician = await fetch(technicianUrl, fetchConfig);
         if (technician.ok){
-                const newTechnician = await technician.json();
-                console.log(newTechnician);
                 setFirstName('');
                 setLastName('');
                 setEmployeeId('');
