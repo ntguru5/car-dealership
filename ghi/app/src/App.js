@@ -13,6 +13,7 @@ import AddSalesperson from "./AddSalesperson";
 import ListSalesPeople from "./ListSalespeople";
 import AddCustomer from "./AddCustomer";
 import ListCustomers from "./ListCustomers";
+import AppointmentList from "./ListServiceAppointments";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="automobiles/create/" element={<AutomobileForm />} />
           <Route path="technicians" element={<TechniciansList />} />
           <Route path="technicians/create" element={<TechnicianForm />} />
+          <Route path="appointments" element={<AppointmentList />} />
           <Route path="salespeople/" element={<ListSalesPeople />} />
           <Route path="salespeople/create/" element={<AddSalesperson />} />
           <Route path="customers/" element={<ListCustomers />} />
