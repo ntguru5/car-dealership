@@ -10,17 +10,15 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
 # Import models from service_rest, here. Ignore vs-code error hinting
-# from service_rest.models import Something
+# from service_rest.models import
 
 
 def poll(repeat=True):
     while True:
         print('Service poller polling for data')
         try:
-            # Write your polling logic, here
-            # Do not copy entire file
-            pass
-        
+            # response = requests.get("http://inventory-api:8000/api/automobiles/")
+
         except Exception as e:
             print(e, file=sys.stderr)
 

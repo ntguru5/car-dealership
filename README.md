@@ -2,7 +2,7 @@
 
 Team:
 
-- Person 1 - Which microservice?
+- Ken Yeh - Service Microservice
 - Toran Obrien - Sales Microservice.
 
 ## Design
