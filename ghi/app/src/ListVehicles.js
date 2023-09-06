@@ -17,9 +17,9 @@ function ListVehicles() {
   }, []);
   return (
     <div>
+      <h1>Models</h1>
       <table className="table table-striped">
         <thead>
-          <h1>Models</h1>
           <tr>
             <th>Name</th>
             <th>Manufacturer</th>
