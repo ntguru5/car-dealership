@@ -6,6 +6,7 @@ import CreateManufacturer from "./CreateManufacturer";
 import ListVehicles from "./ListVehicles";
 import CreateVehicle from "./CreateVehicle";
 import AutomobileForm from "./CreateAutomobileForm";
+import AutomobilesList from "./ListAutomobiles";
 import AddSalesperson from "./AddSalesperson";
 import ListSalesPeople from "./ListSalespeople";
 import AddCustomer from "./AddCustomer";
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/models" element={<ListVehicles />} />
           <Route path="/models/create" element={<CreateVehicle />} />
+          <Route path="automobiles" element={<AutomobilesList />} />
           <Route path="automobiles/create/" element={<AutomobileForm />} />
           <Route path="salespeople/" element={<ListSalesPeople />} />
           <Route path="salespeople/create/" element={<AddSalesperson />} />
