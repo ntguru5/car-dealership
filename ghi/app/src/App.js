@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import ListManufacturers from "./ListManufacturers";
 import CreateManufacturer from "./CreateManufacturer";
 import ListVehicles from "./ListVehicles";
+import CreateVehicle from "./CreateVehicle";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             element={<CreateManufacturer />}
           />
           <Route path="/models" element={<ListVehicles />} />
+          <Route path="/models/create" element={<CreateVehicle />} />
         </Routes>
       </div>
     </BrowserRouter>
