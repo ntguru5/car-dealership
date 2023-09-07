@@ -26,6 +26,7 @@ class TechnicianListEncoder(ModelEncoder):
 class AppointmentListEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        "id",
         "date_time",
         "reason",
         "status",
@@ -95,7 +96,7 @@ def api_list_appointments(request):
     else:
         content = json.loads(request.body)
         try:
-            technician = Technician.objects.get(id=content["technician"])
+            technician = Technician.objects.get(employee_id=content["technician"])
             content["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse(

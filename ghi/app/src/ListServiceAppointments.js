@@ -43,7 +43,7 @@ function AppointmentList() {
 
 
     async function handleCancelAppointment(id) {
-      const appointmentUrl =`http://localhost:8080/api/appointments/${id}/cancel`;
+      const appointmentUrl =`http://localhost:8080/api/appointments/${id}/cancel/`;
       const fetchConfig = {
         method: 'PUT',
         headers: {
@@ -59,7 +59,7 @@ function AppointmentList() {
   }
 
   async function handleFinishAppointment(id) {
-      const appointmentUrl =`http://localhost:8080/api/appointments/${id}/finish`;
+      const appointmentUrl =`http://localhost:8080/api/appointments/${id}/finish/`;
       const fetchConfig = {
         method: 'PUT',
         headers: {
