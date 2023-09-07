@@ -3,7 +3,7 @@
 Team:
 
 - Ken Yeh - Service Microservice
-- Toran Obrien - Sales Microservice.
+- Toran O'Brien - Sales Microservice
 
 ## Design
 
