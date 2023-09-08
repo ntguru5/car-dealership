@@ -32,6 +32,7 @@ class AppointmentListEncoder(ModelEncoder):
         "status",
         "vin",
         "customer",
+        "vip",
         "technician",
     ]
     encoders = {
@@ -88,28 +89,61 @@ def api_delete_technician(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
-        appointment = Appointment.objects.all()
+        appointments = Appointment.objects.all()
+        for appointment in appointments:
+            try:
+                AutomobileVO.objects.get(vin=appointment.vin)
+                appointment.vip = True
+            except AutomobileVO.DoesNotExist:
+                appointment.vip = False
+
         return JsonResponse(
-            {"appointments": appointment},
+            {"appointments": appointments},
             encoder=AppointmentListEncoder,
         )
     else:
         content = json.loads(request.body)
+        technician = Technician.objects.get(employee_id=content["technician"])
+        content["technician"] = technician
+
         try:
-            technician = Technician.objects.get(employee_id=content["technician"])
-            content["technician"] = technician
-        except Technician.DoesNotExist:
-            return JsonResponse(
-                {"message": "Unable to create appointment"},
-                status=400,
-            )
+            vin = AutomobileVO.objects.get(vin=content["vin"])
+            content["vip"] = True
+        except AutomobileVO.DoesNotExist:
+            content["vip"] = False
 
         appointment = Appointment.objects.create(**content)
+
         return JsonResponse(
             appointment,
             encoder=AppointmentListEncoder,
-            safe=False,
+            safe=False
         )
+
+
+    # if request.method == "GET":
+    #     appointments = Appointment.objects.all()
+    #     return JsonResponse(
+    #         {"appointments": appointments},
+    #         encoder=AppointmentListEncoder,
+    #     )
+    # else:
+    #     content = json.loads(request.body)
+    #     try:
+    #         technician = Technician.objects.get(employee_id=content["technician"])
+    #         content["technician"] = technician
+    #     except Technician.DoesNotExist:
+    #         return JsonResponse(
+    #             {"message": "Unable to create appointment"},
+    #             status=400,
+    #         )
+
+    #     appointment = Appointment.objects.create(**content)
+    #     return JsonResponse(
+    #         appointment,
+    #         encoder=AppointmentListEncoder,
+    #         safe=False,
+    #     )
 
 
 # Delete an appointment
