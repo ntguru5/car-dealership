@@ -5,19 +5,34 @@ function ServiceHistory() {
     const [searchVin, setSearchVin] = useState('');
     const [auto, setAuto] = useState([]);
 
+
     const handleSearchVinChange = (e) => {
         const value = e.target.value.toLowerCase();
         setSearchVin(value);
+        filterAppointments(value); // Update filtered appointments as the user types
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-            const filteredAppointments = appointments.filter(appointment => {
-            return appointment.vin.toLowerCase() === searchVin.toLowerCase();
+    // Filter appointments based on the search
+    const filterAppointments = (searchInput) => {
+        const filteredAppointments = appointments.filter(appointment => {
+            return appointment.vin.toLowerCase().includes(searchInput); //use includes method instead of equality comparison
         });
 
         setAppointments(filteredAppointments);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        filterAppointments(searchVin.toLowerCase());
+    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //         const filteredAppointments = appointments.filter(appointment => {
+    //         return appointment.vin.toLowerCase() === searchVin.toLowerCase();
+    //     });
+
+    //     setAppointments(filteredAppointments);
+    // };
 
     // get appointment data
     async function getAppointments() {
@@ -36,10 +51,10 @@ function ServiceHistory() {
         });
 
             setAppointments(modifiedAppointments);
-            }
+        }
     }
 
-    // get auto data
+    // get automobiles data
     async function getAutoData() {
         const response = await fetch('http://localhost:8100/api/automobiles/');
         if (response.ok) {
@@ -78,7 +93,7 @@ function ServiceHistory() {
             <thead>
                 <tr>
                 <th>VIN</th>
-                <th>Is VIP?</th>
+                <th>Is VIP</th>
                 <th>Customer</th>
                 <th>Date</th>
                 <th>Time</th>
