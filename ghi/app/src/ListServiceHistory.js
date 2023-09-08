@@ -3,25 +3,28 @@ import React, { useState, useEffect } from 'react';
 function ServiceHistory() {
     const [appointments, setAppointments] = useState([]);
     const [searchVin, setSearchVin] = useState('');
+    const [auto, setAuto] = useState([]);
 
     const handleSearchVinChange = (e) => {
-        setSearchVin(e.target.value);
+        const value = e.target.value.toLowerCase();
+        setSearchVin(value);
     }
 
-    const handleSearch = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
             const filteredAppointments = appointments.filter(appointment => {
-            return appointment.vin === searchVin;
+            return appointment.vin.toLowerCase() === searchVin.toLowerCase();
         });
-
 
         setAppointments(filteredAppointments);
     };
 
+    // get appointment data
     async function getAppointments() {
         const response = await fetch("http://localhost:8080/api/appointments/");
         if (response.ok) {
             const data = await response.json();
-            // setAppointments(data.appointments);
+
             // Modify the data to extract date and time from date_time field
             const modifiedAppointments = data.appointments.map(appointment => {
             const dateTime = new Date(appointment.date_time);
@@ -35,9 +38,30 @@ function ServiceHistory() {
             setAppointments(modifiedAppointments);
             }
     }
+
+    // get auto data
+    async function getAutoData() {
+        const response = await fetch('http://localhost:8100/api/automobiles/');
+        if (response.ok) {
+            const data = await response.json();
+            setAuto(data.autos);
+        }
+    }
+
     useEffect(() => {
         getAppointments();
+        getAutoData();
     }, []);
+
+    // check if VIN already exists in automobiles list
+    function isVip(vin) {
+        for (let i = 0; i < auto.length; i++) {
+            if (auto[i].vin === vin) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     return (
         <div>
@@ -47,7 +71,7 @@ function ServiceHistory() {
                     <input onChange={handleSearchVinChange} value={searchVin} id="search-input" type="search" className="form-control" maxLength={17} />
                     <label className="form-label" htmlFor="search">Search by VIN</label>
                 </div>
-                <button id="search-button" type="button" className="btn btn-link" onClick={handleSearch}>
+                <button id="btn btn-primary btn-sm" type="button" className="btn btn-link" onClick={handleSubmit}>
                 </button>
             </div>
             <table className="table table-striped">
@@ -66,9 +90,9 @@ function ServiceHistory() {
             <tbody>
                 {appointments.map(appointment => {
                 return (
-                    <tr key={appointment.vin}>
+                    <tr key={appointment.id}>
                     <td>{appointment.vin}</td>
-                    <td>{appointment.vip}</td>
+                    <td>{isVip(appointment.vin) ? 'Yes' : 'No'}</td>
                     <td>{appointment.customer}</td>
                     <td>{appointment.date}</td>
                     <td>{appointment.time}</td>
