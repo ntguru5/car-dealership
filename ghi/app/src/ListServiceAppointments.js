@@ -41,7 +41,10 @@ function AppointmentList() {
       const response = await fetch(appointmentUrl, fetchConfig);
       if (response.ok) {
 
-        window.location.reload();
+        // filter appointment list to exclude this appointment after canceling
+        setAppointments(previousAppointments =>
+          previousAppointments.filter(appointment => appointment.id !== id)
+        );
       }
   }
 
@@ -57,7 +60,9 @@ function AppointmentList() {
       const response = await fetch(appointmentUrl, fetchConfig);
       if (response.ok) {
 
-        window.location.reload();
+        setAppointments(previousAppointments =>
+          previousAppointments.filter(appointment => appointment.id !== id)
+        );
       }
   }
 
@@ -76,9 +81,11 @@ function AppointmentList() {
             </tr>
           </thead>
           <tbody>
-            {appointments.map(appointment => {
+            {appointments
+            .filter((appointment) => appointment.status === "created")
+            .map((appointment) => {
               return (
-                <tr key={appointment.vin}>
+                <tr key={appointment.id}>
                   <td>{appointment.vin}</td>
                   <td>{appointment.vip}</td>
                   <td>{appointment.customer}</td>
@@ -101,7 +108,3 @@ function AppointmentList() {
 }
 
 export default AppointmentList
-
-
-// setAppointments(previousAppointments =>
-//   previousAppointments.filter(appointment => appointment.id !== id))
