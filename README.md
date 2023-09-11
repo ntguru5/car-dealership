@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+
 # CarCar
 
 CarCar is an car dealership application to manage your inventory, service, and sales needs. You can manage your inventory by adding manufacturers and the make and model of your cars. Track your sales through the automobiles list in inventory. The service feature allows you to add technicians and schedule service appointments. It also keeps a service history that you can search by VIN. If it is a returning customer that had previously purchased a vehicle from inventory, they will be flagged as VIP. The Sales feature allows you to add and list customers and salespeople, and record new sales.
@@ -396,11 +400,60 @@ The list customers endpoint will give you a list of all customers currently in t
 }
 ```
 
-INCOMPLETE CREATING A CUSTOMER
+To create a customer, the Post request will look like this.
+
+```
+{
+	"first_name": "Toran",
+	"last_name": "Obrien",
+	"address": "13580 SW 124th Ave",
+	"phone_number": "5035306717"
+}
+```
 
 To delete a customer simply make a DELETE request to http://localhost:8090/api/customers/:id/ where "id" is the identifier of the customer.
 
-INCOMPLETE SALE SECTION (LIST, CREATE, DELETE)
+The list sales endpoint will give you a list of all sales currently in the system. Since this is a GET request no information is needed. Example of returned data:
+```
+{
+	"sales": [
+		{
+			"price": 69000,
+			"salesperson": {
+				"first_name": "Toran",
+				"last_name": "Obrien",
+				"employee_id": "obrientor",
+				"id": 5
+			},
+			"customer": {
+				"first_name": "Toran",
+				"last_name": "Obrien",
+				"address": "13580 SW 124th Ave",
+				"phone_number": "5035306717",
+				"id": 2
+			},
+			"automobile": {
+				"vin": "WBAXH5C50CDW02600",
+				"sold": true
+			},
+			"id": 7
+		},
+}
+```
+
+To create a sale, the POST request will look like example:
+
+```
+{
+	"price": 69000.12,
+	"salesperson": "obrientor",
+	"customer": 2,
+	"automobile": "WBAXH5C50CDW02600"
+}
+```
+
+To delete a sale simply make a DELETE request to http://localhost:8090/api/sales/id/ where "id" is the identifier of the sale.
+
 
 ## Service microservice
 
@@ -412,9 +465,14 @@ The Service microservice is integrated with Inventory because when a car is purc
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+The sales microservice has four modes: An Employee model, a Customer model, an AutomobileVO that contains the vin and sold fields and a Sale model that refrences all previous models.
+
+The AutomobileVO gets the automobile data for cars in our inventory via the poller.py file which gets and updates the db every 60 seconds.
+
+The sales microservice is integrated with Inventory because when a car is sold we need to track the information of the customer, the salesperson, and all the data that goes along with the sold automobile.
 
 ## Diagram
 
 ![alt text goes here](CarCar.png "caption text goes here when you hover over image")
+
+> > > > > > > main
