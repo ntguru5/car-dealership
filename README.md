@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
-
 # CarCar
 
 CarCar is an car dealership application to manage your inventory, service, and sales needs. You can manage your inventory by adding manufacturers and the make and model of your cars. Track your sales through the automobiles list in inventory. The service feature allows you to add technicians and schedule service appointments. It also keeps a service history that you can search by VIN. If it is a returning customer that had previously purchased a vehicle from inventory, they will be flagged as VIP. The Sales feature allows you to add and list customers and salespeople, and record new sales.
@@ -474,5 +470,3 @@ The sales microservice is integrated with Inventory because when a car is sold w
 ## Diagram
 
 ![alt text goes here](CarCar.png "caption text goes here when you hover over image")
-
-> > > > > > > main
