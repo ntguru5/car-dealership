@@ -20,9 +20,9 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -30,7 +30,7 @@ function Nav() {
               >
                 Cars
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <NavLink className="dropdown-item" to="/manufacturers">
                     Manufacturers
@@ -63,9 +63,9 @@ function Nav() {
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -73,7 +73,7 @@ function Nav() {
               >
                 Services
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <NavLink className="dropdown-item" to="/appointments">
                     Appointments
@@ -91,9 +91,9 @@ function Nav() {
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -101,7 +101,7 @@ function Nav() {
               >
                 Employees
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <NavLink className="dropdown-item" to="/technicians">
                     Technicians
@@ -124,9 +124,9 @@ function Nav() {
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -134,7 +134,7 @@ function Nav() {
               >
                 Customers
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <NavLink className="dropdown-item" to="/customers">
                     Customers
@@ -147,9 +147,9 @@ function Nav() {
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -157,7 +157,7 @@ function Nav() {
               >
                 Sales
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
                   <NavLink className="dropdown-item" to="/sales">
                     Sales

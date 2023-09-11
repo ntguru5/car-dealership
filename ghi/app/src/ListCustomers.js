@@ -21,7 +21,7 @@ function ListCustomers() {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Fisrt Name</th>
+            <th>First Name</th>
             <th>Last Name</th>
             <th>Phone Number</th>
             <th>Address</th>

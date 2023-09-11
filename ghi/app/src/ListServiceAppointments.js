@@ -29,19 +29,6 @@ function AppointmentList() {
         getAppointments();
     }, [])
 
-    // async function getAutomobiles() {
-    //     const response = await fetch("http://localhost:8100/api/automobiles");
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         setAutomobiles(data.automobiles);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getAutomobiles();
-    // }, [])
-
-
     async function handleCancelAppointment(id) {
       const appointmentUrl =`http://localhost:8080/api/appointments/${id}/cancel/`;
       const fetchConfig = {
@@ -114,3 +101,7 @@ function AppointmentList() {
 }
 
 export default AppointmentList
+
+
+// setAppointments(previousAppointments =>
+//   previousAppointments.filter(appointment => appointment.id !== id))
