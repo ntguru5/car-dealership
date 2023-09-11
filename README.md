@@ -461,7 +461,7 @@ The Service microservice is integrated with Inventory because when a car is purc
 
 ## Sales microservice
 
-The sales microservice has four models: An Employee model, a Customer model, an AutomobileVO that contains the vin and sold fields and a Sale model that refrences all previous models.
+The sales microservice has four models: An Employee model, a Customer model, an AutomobileVO that contains the vin and sold fields and a Sale model that references all previous models.
 
 The AutomobileVO gets the automobile data for cars in our inventory via the poller.py file which gets and updates the db every 60 seconds.
 
