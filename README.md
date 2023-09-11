@@ -469,4 +469,4 @@ The sales microservice is integrated with Inventory because when a car is sold w
 
 ## Diagram
 
-![alt text goes here](CarCar.png "caption text goes here when you hover over image")
+![alt text goes here](CarCar.png "CarCar diagram")
