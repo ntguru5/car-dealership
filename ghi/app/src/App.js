@@ -16,6 +16,7 @@ import ListCustomers from "./ListCustomers";
 import AppointmentList from "./ListServiceAppointments";
 import ListSales from "./ListSales";
 import SaleHistory from "./SaleHistory";
+import CreateSale from "./CreateSale";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/manufacturers" element={<ListManufacturers />} />
           <Route
-            path="/manufacturers/create"
+            path="/manufacturers/create/"
             element={<CreateManufacturer />}
           />
           <Route path="/models" element={<ListVehicles />} />
@@ -42,6 +43,7 @@ function App() {
           <Route path="customers/create/" element={<AddCustomer />} />
           <Route path="sales/" element={<ListSales />} />
           <Route path="sales/history/" element={<SaleHistory />} />
+          <Route path="sales/create/" element={<CreateSale />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -4,7 +4,6 @@ from django.http import JsonResponse
 import json
 from .models import Customer, Salesperson, Sale, AutomobileVO
 from .encoders import (
-    AutomobileVoEncoder,
     SalespersonEncoder,
     SaleEncoder,
     CustomerEncoder
@@ -85,7 +84,7 @@ def list_sales(request):
             content["salesperson"] = salesperson
         except Salesperson.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid Sales Person"},
+                {"message": "Salesperson does not exist"},
                 status=400
             )
         try:
@@ -93,15 +92,18 @@ def list_sales(request):
             content["customer"] = customer
         except Customer.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid Customer"},
+                {"message": "Customer does not exist"},
                 status=400
             )
         try:
             automobile = AutomobileVO.objects.get(vin=content["automobile"])
             content["automobile"] = automobile
+            content["automobile"].sold = True
+            content["automobile"].save()
+
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid Automobile"},
+                {"message": "Automobile does not exist"},
                 status=400
             )
         sale = Sale.objects.create(**content)
