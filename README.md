@@ -368,7 +368,7 @@ INCOMPLETE CREATING A CUSTOMER
 
 To delete a customer simply make a DELETE request to http://localhost:8090/api/customers/:id/ where "id" is the identifier of the customer.
 
-INCOMPLETE SALE SECTION
+INCOMPLETE SALE SECTION (LIST, CREATE, DELETE)
 
 ## Service microservice
 
