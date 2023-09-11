@@ -364,11 +364,11 @@ The list customers endpoint will give you a list of all customers currently in t
 }
 ```
 
-GOT STUCK HERE CREATING A CUSTOMER
+INCOMPLETE CREATING A CUSTOMER
 
 To delete a customer simply make a DELETE request to http://localhost:8090/api/customers/:id/ where "id" is the identifier of the customer.
 
-GOT STUCK HERE WITH THE SALE SECTION
+INCOMPLETE SALE SECTION
 
 ## Service microservice
 
