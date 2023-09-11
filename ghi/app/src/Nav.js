@@ -20,7 +20,41 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Cars
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <NavLink className="dropdown-item" to="/manufacturers">
+                    Manufacturers
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/manufacturers/create">
+                    Add a Manufacturer
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/models">
+                    Models
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/models/create">
+                    Add Models
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers">
                 Manufacturers
               </NavLink>
@@ -39,7 +73,7 @@ function Nav() {
               <NavLink className="nav-link" to="/models/create">
                 Create a Model
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <NavLink className="nav-link" to="/automobiles">
                 Automobiles
