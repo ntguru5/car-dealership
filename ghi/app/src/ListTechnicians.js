@@ -36,7 +36,6 @@ return (
                             <td>{technician.employee_id}</td>
                             <td>{technician.first_name}</td>
                             <td>{technician.last_name}</td>
-
                         </tr>
                     )
                 })}

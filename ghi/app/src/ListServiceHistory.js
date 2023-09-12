@@ -9,8 +9,14 @@ function ServiceHistory() {
     const handleSearchVinChange = (e) => {
         const value = e.target.value.toLowerCase();
         setSearchVin(value);
+
+        if (value === ''){
+            window.location.reload(); // refresh page when search input is cleared
+        }else {
         filterAppointments(value); // Update filtered appointments as the user types
+        }
     }
+
 
     // Filter appointments based on the search
     const filterAppointments = (searchInput) => {
@@ -25,14 +31,6 @@ function ServiceHistory() {
         e.preventDefault();
         filterAppointments(searchVin.toLowerCase());
     };
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //         const filteredAppointments = appointments.filter(appointment => {
-    //         return appointment.vin.toLowerCase() === searchVin.toLowerCase();
-    //     });
-
-    //     setAppointments(filteredAppointments);
-    // };
 
     // get appointment data
     async function getAppointments() {
