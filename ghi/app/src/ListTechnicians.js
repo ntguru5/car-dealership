@@ -16,6 +16,20 @@ useEffect(() => {
     getData()
 }, []);
 
+const handleDeleteTechnician = async (technicianId) => {
+    // Send a DELETE request to delete the technician
+    const deleteUrl = `http://localhost:8080/api/technicians/${technicianId}`;
+    const response = await fetch(deleteUrl, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        // If the deletion is successful, update the list of technicians
+        setTechnicians((previousTechnicians) =>
+            previousTechnicians.filter((technician) => technician.id !== technicianId)
+        );
+    }
+}
 return (
     <div>
         <>
@@ -36,6 +50,14 @@ return (
                             <td>{technician.employee_id}</td>
                             <td>{technician.first_name}</td>
                             <td>{technician.last_name}</td>
+                            <td>
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={() => handleDeleteTechnician(technician.id)}
+                                    >
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     )
                 })}
