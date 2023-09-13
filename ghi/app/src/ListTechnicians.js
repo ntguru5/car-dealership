@@ -28,8 +28,12 @@ const handleDeleteTechnician = async (technicianId) => {
         setTechnicians((previousTechnicians) =>
             previousTechnicians.filter((technician) => technician.id !== technicianId)
         );
+    }else {
+        // else throw error here
+        console.error("Failed to delete technician");
     }
 }
+
 return (
     <div>
         <>
