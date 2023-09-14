@@ -54,14 +54,7 @@ return (
                             <td>{technician.employee_id}</td>
                             <td>{technician.first_name}</td>
                             <td>{technician.last_name}</td>
-                            <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => handleDeleteTechnician(technician.id)}
-                                    >
-                                    Delete
-                                </button>
-                            </td>
+                            <td><button className="btn btn-danger" onClick={() => handleDeleteTechnician(technician.id)}>Delete</button></td>
                         </tr>
                     )
                 })}
