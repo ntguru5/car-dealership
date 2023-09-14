@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function AppointmentList() {
     const [appointments, setAppointments] = useState([]);
-    // const [automobiles, setAutomobiles] = useState([]);
+    const [auto, setAuto] = useState([]);
 
     async function getAppointments() {
         const response = await fetch("http://localhost:8080/api/appointments");
@@ -66,6 +66,15 @@ function AppointmentList() {
       }
   }
 
+  function isVip(vin) {
+    for (let i = 0; i < auto.length; i++) {
+        if (auto[i].vin === vin) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
     return (
         <table className="table table-striped">
@@ -87,7 +96,7 @@ function AppointmentList() {
               return (
                 <tr key={appointment.id}>
                   <td>{appointment.vin}</td>
-                  <td>{appointment.vip}</td>
+                  <td>{isVip(appointment.vin) ? 'Yes' : 'No'}</td>
                   <td>{appointment.customer}</td>
                   <td>{appointment.date}</td>
                   <td>{appointment.time}</td>
