@@ -25,10 +25,6 @@ function AppointmentList() {
         }
     }
 
-    useEffect(() => {
-        getAppointments();
-    }, [])
-
     async function handleCancelAppointment(id) {
       const appointmentUrl =`http://localhost:8080/api/appointments/${id}/cancel/`;
       const fetchConfig = {
@@ -66,6 +62,19 @@ function AppointmentList() {
       }
   }
 
+  async function getAutoData() {
+    const response = await fetch('http://localhost:8100/api/automobiles/');
+    if (response.ok) {
+        const data = await response.json();
+        setAuto(data.autos);
+    }
+}
+
+useEffect(() => {
+    getAppointments();
+    getAutoData();
+}, []);
+
   function isVip(vin) {
     for (let i = 0; i < auto.length; i++) {
         if (auto[i].vin === vin) {
@@ -74,7 +83,6 @@ function AppointmentList() {
     }
     return false;
 }
-
 
     return (
         <table className="table table-striped">
