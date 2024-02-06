@@ -10,7 +10,7 @@ Team:
 ## Getting started
 
 1. Fork this repository
-2. Clone the forked repository to your local computer using: `git clone https://gitlab.com/toranaobrien/project-beta`
+2. Clone the forked repository to your local computer using: `git clone https://github.com/ntguru5/car-dealership.git`
 3. From your project directory, run the following Docker commands:
 
 ```
